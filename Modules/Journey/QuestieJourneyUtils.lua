@@ -367,10 +367,10 @@ function QuestieJourneyUtils.GetItemIcon(itemId)
         local link = GetItemLink()
         if IsShiftKeyDown() then
             if link then
-                if (not ChatFrame1EditBox:IsVisible()) then
-                    ChatFrame_OpenChat(link)
-                else
+                if ChatEdit_GetActiveWindow() then
                     ChatEdit_InsertLink(link)
+                else
+                    ChatFrame_OpenChat(link)
                 end
             end
         elseif IsControlKeyDown() and link then
