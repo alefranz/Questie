@@ -7,8 +7,6 @@ QuestieJourneyFrame = nil
 -------------------------
 ---@type QuestiePlayer
 local QuestiePlayer = QuestieLoader:ImportModule("QuestiePlayer")
----@type QuestieLib
-local QuestieLib = QuestieLoader:ImportModule("QuestieLib")
 ---@type JourneyData
 local JourneyData = QuestieLoader:ImportModule("JourneyData")
 ---@type l10n

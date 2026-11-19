@@ -45,6 +45,7 @@ end
 ---@field Id NpcId The ID of the NPC
 ---@field Waypoints table<AreaId, CoordPair[]>
 ---@field Hostile true|boolean
+---@field IsRare true? A rare or rare elite, which might not be there: map drawing shows its patrol only when no other target marks where to go.
 
 ---@class SpawnListItem : SpawnListBase, SpawnListTooltip, SpawnListNPC, SpawnListObject
 ---@field Id ObjectId|NpcId The ID of the Object or Npc
@@ -103,15 +104,16 @@ monster = function(npcId, objective)
     local rank = QuestieDB.QueryNPCSingle(npcId, "rank")
 
     local enableSpawns = not QuestieCorrections.questNPCBlacklist[npcId]
-    local enableWaypoints = enableSpawns and 2 ~= rank -- a rare mob spawn. todo: option for this
 
     ---@type SpawnListNPC
     local monster = {
         Id = npcId,
         Name = name,
         Spawns = enableSpawns and spawns or {},
-        Waypoints = enableWaypoints and QuestieDB.QueryNPCSingle(npcId, "waypoints") or {},
+        Waypoints = enableSpawns and QuestieDB.QueryNPCSingle(npcId, "waypoints") or {},
         Hostile = true,
+        IsRare = (rank == 2 or rank == 4) or nil, -- cmangos ranks: 2 rare elite, 4 rare
+
         Icon = objective.Icon or Questie.ICON_TYPE_SLAY,
         GetIconScale = _GetIconScaleForMonster,
         IconScale = _GetIconScaleForMonster(),
@@ -240,6 +242,7 @@ item = function(itemId, objective)
                                 Name = sourceData.Name,
                                 -- Monsters dropping the item are fought; objects holding it are not.
                                 Hostile = sourceData.Hostile,
+                                IsRare = sourceData.IsRare,
                                 ItemId = item.Id,
                                 TooltipKey = sourceData.TooltipKey,
                                 Spawns = {},
