@@ -134,8 +134,7 @@ CF_METADATA=$(cat <<-EOF
             {slug: "LibDataBroker-1-1", type: "embeddedLibrary"},
             {slug: "LibDBIcon-1-0", type: "embeddedLibrary"},
             {slug: "LibSharedMedia-3-0", type: "embeddedLibrary"},
-            {slug: "LibStub", type: "embeddedLibrary"},
-            {slug: "LibUIDropDownMenu", type: "embeddedLibrary"}
+            {slug: "LibStub", type: "embeddedLibrary"}
         ]
     }
 }

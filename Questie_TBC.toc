@@ -117,6 +117,7 @@ Modules\Libs\WrappedText.lua
 Modules\Libs\QuestieLib.lua
 Modules\Libs\QuestieSerializer.lua
 Modules\Libs\QuestieCombatQueue.lua
+Modules\Libs\QuestieMenuBuilder.lua
 
 # Modules
 Modules\QuestieValidateGameCache.lua
@@ -188,7 +189,7 @@ Modules\Map\QuestieMap.lua
 Modules\Map\QuestieMapUtils.lua
 Modules\Map\HBDHooks.lua
 Modules\Map\WeaponMasterSkills.lua
-Modules\Map\Moonwell.lua
+Modules\Map\ProfessionStations.lua
 
 # Waypoints
 Modules\Map\Waypoints\WaypointGeometry.lua
